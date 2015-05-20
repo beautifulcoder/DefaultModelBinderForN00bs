@@ -1,0 +1,35 @@
+﻿@model PersonViewModel
+
+@{
+    ViewBag.Title = "Edit Person";
+}
+
+<h2>Edit Person</h2>
+@using (Html.BeginForm("Edit", "Person"))
+{
+    <div>
+        @Html.HiddenFor(m => m.Id)
+        <label>Name:</label>
+        <span>@Html.TextBoxFor(m => m.Name)</span>
+    </div>
+    <h3>Friend</h3>
+    <div>
+        <label>Friend:</label>
+        @Html.HiddenFor(m => m.Friend.Id)
+        <span>@Html.TextBoxFor(m => m.Friend.Name)</span>
+    </div>
+    <h3>Addresses</h3>
+    for (var i = 0; i < Model.Addresses.Length; i++)
+    {
+        <div>
+            @Html.HiddenFor(m => m.Addresses[i].Id)
+            <label>City:</label>
+            <span>@Html.TextBoxFor(m => m.Addresses[i].City)</span>
+            <label>State:</label>
+            <span>@Html.TextBoxFor(m => m.Addresses[i].State)</span>
+        </div>
+    }
+    <div>
+        <button>Submit</button>
+    </div>
+}
